@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List of Books</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>List of Books</h2>
+            <div class="text-left">
+                <a class="btn btn-primary" href="/create_book">Add Book</a>
+            </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>title</th>
+                    <th>genre</th>
+                    <th>Price</th>
+                    <th>published_date</th>
+                    <th>author</th>
+                    <th>publisher</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td>{{book.title}}</td>
+                    <td>{{book.genre}}</td>
+                    <td>{{book.price}}</td>
+                    <td>{{book.published_date}}</td>
+                    <td>{{book.author}}</td>
+                    <td>{{book.publisher}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

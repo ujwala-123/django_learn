@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Publisher Profile Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Publisher Profile Form</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="firstname">First Name:</label>
+                <input type="text" class="form-control" id="firstname" name="firstname" required>
+            </div>
+            <div class="form-group">
+                <label for="lastname">Last Name:</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" required>
+            </div>
+            <div class="form-group">
+                <label for="recommendedby">Recommended By:</label>
+                <select class="form-control" id="recommendedby" name="recommendedby">
+                    <option value="">Select</option>
+                    <!-- You can populate the options dynamically using Django template tags -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="joindate">Join Date:</label>
+                <input type="date" class="form-control" id="joindate" name="joindate" required>
+            </div>
+            <div class="form-group">
+                <label for="popularity_score">Popularity Score:</label>
+                <input type="number" class="form-control" id="popularity_score" name="popularity_score" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Profile</button><br></br>
+            <p >Back to <a class="btn btn-primary"  href="/">Library</a></p>
+        </form>
+    </div>
+</body>
+</html>

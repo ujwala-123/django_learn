@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Books Profile Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    
+
+</head>
+<body>
+    <div class="container">
+        <h2>Create Books Profile</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">title:</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="genre">genre:</label>
+                <input type="text" class="form-control" id="genre" name="genre" required>
+            </div>
+            <div class="form-group">
+                <label for="price">price:</label>
+                <input type="number" class="form-control" id="price" name="price">
+            </div>
+            <div class="form-group">
+                <label for="published_date">published Date:</label>
+                <input type="date" class="form-control" id="published_date" name="published_date" required>
+            </div>
+            <div class="form-group">
+                <label for="author">author:</label>
+                <a class="btn btn-primary btn-sm"  href="/create_author">Add Author</a><br><br>
+                <select class="form-control" id="author" name="author" >
+                    <!-- <option value="{{ record_info.id }}" >{{ record_info.firstname }}</option> -->
+                    {% for option in author %}
+                    <option value="{{ option.id }}">{{ option.firstname }}</option>
+                {% endfor %}
+                
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="publisher">publisher:</label>
+                <a class="btn btn-primary btn-sm"  href="/create_publisher">Add Publisher</a><br><br>
+                <select multiple class="form-control" id="publisher" name="publisher">
+                    {% for option in publisher %}
+                    <option value="{{ option.id }}">{{ option.firstname }}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Book</button><br></br>
+            <p >Back to <a class="btn btn-primary"  href="/">Library</a></p>
+        </form>
+    </div>
+
+    <script>
+        $("#author").val('{{ author_id }}');
+    </script>
+</body>
+</html>

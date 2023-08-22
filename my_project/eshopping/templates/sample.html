@@ -1,0 +1,83 @@
+<form method="POST" action="/config/uploadData/" enctype="multipart/form-data" class="form-horizontal">
+    {% csrf_token %}
+    {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div class="form-group row">
+        <label for="dataset-name" class="col-sm-3  control-label col-form-label">Dataset Name</label>
+        <div class="col-sm-9">
+        <div class="input-group">
+            <div class="input-group-prepend"><span class="input-group-text"><i class="ti-write"></i></span></div>
+                {{ form_dataset_upload.dataset_name }}
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="id_file" class="col-sm-3  control-label col-form-label">CSV Upload</label>
+        <div class="col-sm-9">
+            <div class="input-group">
+                <div class="input-group-prepend"><span class="input-group-text"><i class="ti-upload"></i></span></div>
+                <div class="input-inline">
+                {{ form_dataset_upload.file }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="dataset_startdate" class="col-sm-3  control-label col-form-label">Start Date</label>
+        <div class="col-sm-9">
+            <div class="input-group">
+                <div class="input-group-prepend"><span class="input-group-text"><i class="ti-calendar"></i></span></div>
+                {{ form_dataset_upload.start_date }}
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="dataset_NumberofPeriods" class="col-sm-3  control-label col-form-label">Group Length</label>
+        <div class="col-sm-9">
+            <div class="input-group">
+                <div class="input-group-prepend"><span class="input-group-text"><i class="ti-timer"></i></span></div>
+                {{ form_dataset_upload.number_of_periods }}
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="dataset_PeriodLength" class="col-sm-3  control-label col-form-label">Period Length</label>
+        <div class="col-sm-9">
+            <div class="input-group">
+                <div class="input-group-prepend"><span class="input-group-text"><i class="ti-time"></i></span></div>
+                {{ form_dataset_upload.period_length }}
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="dataset_Frequency" class="col-sm-3  control-label col-form-label">Frequency</label>
+        <div class="col-sm-9">
+            <div class="input-group">
+                <div class="input-group-prepend"><span class="input-group-text"><i class="ti-pulse"></i></span></div>
+                {{ form_dataset_upload.frequency }}
+                <!-- <select class="custom-select col-12" id="Frequency" name="frequency" >
+                    <option selected="">Choose Frequency...</option>
+                    <option value="M">Month</option> -->
+                    <!-- <option value="2">Quarter</option>
+                    <option value="3">Year</option> -->
+                <!-- </select> -->
+            </div>
+        </div>
+    </div>
+    <!-- <div class="modal-footer">
+    <button type="submit" class="btn btn-info waves-effect waves-light">Save</button>
+    <button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Cancel</button>
+    </div> -->
+</form>
